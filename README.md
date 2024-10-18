@@ -1,70 +1,47 @@
-# Getting Started with Create React App
+# Task Management Module
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Proposal
+The **Task Management Module** is a web-based application designed to help users efficiently manage and track tasks within teams or organizations. The application allows users to create, assign, and monitor the progress of tasks, with features aimed at improving team collaboration and productivity. The project integrates several core software engineering practices, including version control, task management, continuous integration, and automated testing.
+The frontend of the application is developed using React.js, , offering a responsive and user-friendly interface for managing tasks. The backend is being built using Node.js, handling the business logic and data management through APIs. We are currently working on the backend, and it is expected to be completed in a few days.
+Our project emphasizes modern software development workflows, incorporating Git for version control, ClickUp for task tracking, GitLab for continuous integration and deployment.
 
-## Available Scripts
 
-In the project directory, you can run:
+## Project Goals and deliverables
+1. **UI/UX Design:**
+ - The UI focuses on simplicity and ease of use, ensuring that users can easily navigate the platform to create, assign, and track tasks. Key features include clear task overviews, quick access to task details, and user-friendly forms for task management.
 
-### `npm start`
+2. **Backend Development:**
+   - The backend is being developed using Node.js to handle the core functionality of the task management module, including task creation, updates, and user management through RESTful APIs. Backend development is expected to be completed soon.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+3. **Task and Issue Managemaent:**
+   - ClickUp is the tool used to plan, organize, and manage project tasks. Each task is linked to specific milestones, and team members track progress through this platform, ensuring deadlines are met.
+   
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+4. **CI/CD Pipeline**
+   - We are leveraging GitLab CI to set up continuous integration pipelines. This ensures that every change made to the codebase is automatically built and tested before merging, reducing bugs and improving the overall code quality.
 
-### `npm test`
+5. **Version Control:**
+   - GitLab is being used to manage the project repository, including version control and code collaboration. The team follows best practices such as proper branching, pull requests, and code reviews to maintain a structured and efficient development process.
+   
+6. **Build and Test Automation:**
+   - Once the backend is complete, Gradle or Maven will be used to automate the build process and run tests to ensure the code remains reliable and bug-free throughout the development cycle.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Technologies
+- **Frontend**: React.js
+- **Backend**: Node.js
+- **Version Control**: Git on GitLab
+- **Task Management**: ClickUp
+- **CI/CD**: GitLab CI for automated testing and deployment
+- **Issue Tracking**: JIRA
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Scope and Deliverables
+-	A Task Management Module with a React.js frontend and Node.js backend, providing API-driven task management features.
+- Integration with GitLab for version control and continuous integration pipelines.
+- Maintain transparency and collaboration through task management tools like ClickUp.
 
-### `npm run eject`
+## Links
+- [ClickUp Board] (https://app.clickup.com/9012280665/v/b/s/90121687761) 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
