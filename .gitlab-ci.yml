@@ -9,6 +9,7 @@ frontend_build:
   script:
     - cd frontend
     - npm install  # Installs dependencies for the frontend
+    - unset CI  # This removes the CI environment variable
     - npm run build  # Optional: Only include if your frontend needs a build step
   only:
     - main
