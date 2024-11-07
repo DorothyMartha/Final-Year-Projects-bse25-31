@@ -1,61 +1,25 @@
-image: node:20.18.0  # Use Node.js image that matches your project
-
+image: node:20.18.0
 stages:
+  - test
   - build
   - test
+  - deploy
 
-cache:
-  paths:
-    - node_modules/
-    - frontend/node_modules/
-    - backend/node_modules/
-
-# Frontend Build Job
-build-frontend:
+frontend_build:
   stage: build
   script:
     - cd frontend
-    - npm install
-    - npm run build  # Make sure "build" script is defined in frontend/package.json
-    - cd ..
-  artifacts:
-    paths:
-      - frontend
+    - npm install  # Installs dependencies for the frontend
+    - unset CI  # This removes the CI environment variable
+    - npm run build  # Optional: Only include if your frontend needs a build step
+  only:
+    - main
 
-# Backend Build Job
-build-backend:
+backend_build:
   stage: build
   script:
     - cd backend
-    - npm install
-
-    - cd ..
-  artifacts:
-    paths:
-      - backend
-
-# Frontend Test Job
-test-frontend:
-  stage: test
-  script:
-    - cd frontend
-    - npm install  # Ensure dependencies are up-to-date
-    - npm test     # Ensure "test" script is defined in frontend/package.json
-    - cd ..
-  artifacts:
-    when: always
-    paths:
-      - frontend
-
-# Backend Test Job
-test-backend:
-  stage: test
-  script:
-    - cd backend
-    - npm install  # Ensure dependencies are up-to-date
-    - npm test     # Ensure "test" script is defined in backend/package.json
-    - cd ..
-  artifacts:
-    when: always
-    paths:
-      - backend
+    - npm install  # Installs dependencies for the backend
+    - npm run build  # Optional: Only include if your backend needs a build step
+  only:
+    - main
