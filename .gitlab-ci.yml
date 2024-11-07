@@ -1,21 +1,62 @@
-stages:
-  - build
-  - test
+image: node:18.16.0  # Set to Node.js version 18.16.0 as specified
 
-# Define the build stage for front end and back end
+stages:
+  - test
+  - build
+
+cache:
+  paths:
+    - node_modules/
+
+# Test stage for the frontend
+frontend_test:
+  stage: test
+  script:
+    - cd frontend
+    - npm install
+    - npm test  # Runs frontend tests, assumes "test" script in frontend/package.json
+  artifacts:
+    when: always
+    paths:
+      - frontend/test-results
+  allow_failure: true
+
+# Test stage for the backend
+backend_test:
+  stage: test
+  script:
+    - cd backend
+    - npm install
+    - npm test  # Runs backend tests, assumes "test" script in backend/package.json
+  artifacts:
+    when: always
+    paths:
+      - backend/test-results
+  allow_failure: true
+
+# Build stage for the frontend
 frontend_build:
   stage: build
   script:
     - cd frontend
+    - rm -rf build
     - npm install
     - npm run build
-  only:
-    - main
+    - rm -rf public
+    - cp build/index.html build/404.html
+    - mv build public
+  artifacts:
+    paths:
+      - frontend/public
 
+# Build stage for the backend
 backend_build:
   stage: build
   script:
     - cd backend
     - npm install
-  only:
-    - main
+    - npm run build  # Assumes "build" script in backend/package.json if you have one
+  artifacts:
+    paths:
+      - backend/dist  # Assumes your backend build outputs to a "dist" folder; adjust if needed
+
