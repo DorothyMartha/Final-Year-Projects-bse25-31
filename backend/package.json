@@ -4,7 +4,8 @@
   "description": "Task Management API",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
+    "build": "echo 'No build necessary for backend'",
     "start": "nodemon server.js"
   },
   "keywords": [],
@@ -18,5 +19,9 @@
     "nodemon": "^3.1.7",
     "sequelize": "^6.37.5",
     "sequelize-cli": "^6.6.2"
+  },
+  "devDependencies": {
+    "chai": "^5.1.2",
+    "mocha": "^10.8.2"
   }
 }
