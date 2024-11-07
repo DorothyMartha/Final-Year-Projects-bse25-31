@@ -1,21 +1,24 @@
 stages:
   - build
   - test
+  - deploy
 
-# Define the build stage for front end and back end
 frontend_build:
   stage: build
+  image: node:16  # Node.js version 16 with npm included
   script:
     - cd frontend
-    - npm install
-    - npm run build
+    - npm install  # Installs dependencies for the frontend
+    - npm run build  # Optional: Only include if your frontend needs a build step
   only:
     - main
 
 backend_build:
   stage: build
+  image: node:16  # Node.js version 16 with npm included
   script:
     - cd backend
-    - npm install
+    - npm install  # Installs dependencies for the backend
+    - npm run build  # Optional: Only include if your backend needs a build step
   only:
     - main
