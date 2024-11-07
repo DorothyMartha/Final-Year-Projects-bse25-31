@@ -1,25 +1,56 @@
-image: node:20.18.0
+image: node:20.18.0  # Use Node.js image that matches your project
+
 stages:
-  - test
   - build
   - test
-  - deploy
 
-frontend_build:
+cache:
+  paths:
+    - frontend/node_modules/
+    - backend/node_modules/
+
+# Frontend Build Job
+build-frontend:
   stage: build
   script:
     - cd frontend
-    - npm install  # Installs dependencies for the frontend
-    - unset CI  # This removes the CI environment variable
-    - npm run build  # Optional: Only include if your frontend needs a build step
-  only:
-    - main
+    - npm install
+    - npm run build  # Make sure "build" script is defined in frontend/package.json
+    - cd ..
+  artifacts:
+    paths:
+      - frontend/build
 
-backend_build:
+# Backend Build Job (no build artifacts needed)
+build-backend:
   stage: build
   script:
     - cd backend
-    - npm install  # Installs dependencies for the backend
-    - npm run build  # Optional: Only include if your backend needs a build step
-  only:
-    - main
+    - npm install  # Skipping npm run build here
+    - cd ..
+
+# Frontend Test Job
+test-frontend:
+  stage: test
+  script:
+    - cd frontend
+    - npm install  # Ensure dependencies are up-to-date
+    - npm test     # Ensure "test" script is defined in frontend/package.json
+    - cd ..
+  artifacts:
+    when: always
+    paths:
+      - frontend/test-reports  # Optional: Adjust if you want to save test reports
+
+# Backend Test Job
+test-backend:
+  stage: test
+  script:
+    - cd backend
+    - npm install  # Ensure dependencies are up-to-date
+    - npm test     # Ensure "test" script is defined in backend/package.json
+    - cd ..
+  artifacts:
+    when: always
+    paths:
+      - backend/test-reports  # Optional: Adjust if you want to save test reports
