@@ -32,4 +32,5 @@ db.sequelize_config = sequelize_config;
 db.spaces = require("./space.js")(sequelize_config, Sequelize);
 db.teams = require("./team.js")(sequelize_config, Sequelize);
 db.members = require("./member.js")(sequelize_config, Sequelize);
+db.tasks = require("./task.js")(sequelize_config, Sequelize);
 module.exports = db;

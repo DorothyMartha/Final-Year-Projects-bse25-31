@@ -2,11 +2,14 @@
 
 // building REST APIs
 const express = require("express");
+const cors = require('cors');
 
 // helps to parse the json requests and create request objects
 const bodyParser = require("body-parser");
 
 const app = express();
+
+app.use(cors());
 
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
@@ -64,6 +67,9 @@ require("./routes/teamRoutes")(app);
 
 // import member routes
 require("./routes/memberRoutes")(app);
+
+// import task routes
+require("./routes/taskRoutes")(app);
 
 // define port for project
 const PORT = 8075;

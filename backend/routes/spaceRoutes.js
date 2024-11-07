@@ -5,7 +5,7 @@ var router = require("express").Router();
 const spaceController = require("../controllers/spaceController");
 // http://localhost:8075/api/task/addspaces
 
-// router.get("/spaces", spaceController.GetAllSpaces);
+router.get("/allspaces", spaceController.GetAllSpaces);
 // router.get("/spaces/:id", spaceController.GetSpaceById);
 router.post("/addspaces", spaceController.CreateSpace);
 // router.put("/spaces/:id", spaceController.UpdateSpace);

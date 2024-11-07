@@ -1,4 +1,4 @@
-// models/team.js
+// models/member.js
 
 module.exports = (sequelize, Sequelize) => {
     const Member = sequelize.define('member', {

@@ -5,25 +5,25 @@ const Space = db.spaces;
 const Op = db.Sequelize.Op;
 
 // Retrieve all Spaces
-// exports.GetAllSpaces = (req, res) => {
-//     Space.findAll()
-//         .then(data => {
-//             res.send({
-//                 status: "Success",
-//                 status_code: 1000,
-//                 message: "Spaces successfully retrieved",
-//                 number_of_spaces: data.length,
-//                 results: data
-//             });
-//         })
-//         .catch(err => {
-//             res.status(500).send({
-//                 status: "Error",
-//                 status_code: 1001,
-//                 message: err.message || "Error occurred while retrieving Spaces"
-//             });
-//         });
-// };
+exports.GetAllSpaces = (req, res) => {
+    Space.findAll()
+        .then(data => {
+            res.send({
+                status: "Success",
+                status_code: 1000,
+                message: "Spaces successfully retrieved",
+                number_of_spaces: data.length,
+                results: data
+            });
+        })
+        .catch(err => {
+            res.status(500).send({
+                status: "Error",
+                status_code: 1001,
+                message: err.message || "Error occurred while retrieving Spaces"
+            });
+        });
+};
 
 // Retrieve Space by ID
 // exports.GetSpaceById = (req, res) => {
