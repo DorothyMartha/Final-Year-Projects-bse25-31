@@ -1,40 +1,45 @@
 image: node:20.18.0
 
 stages:
-  - build
   - test
+  - build
 
-cache:
-  key: ${CI_COMMIT_REF_SLUG}
-  paths:
-    - frontend/node_modules/
-    - backend/node_modules/
+# Frontend Test Stage
+test_frontend:
+  stage: test
+  script:
+    - cd frontend
+    - npm install
+    - npm test  
+# Backend Test Stage
+test_backend:
+  stage: test
+  script:
+    - cd backend
+    - npm install
+    - npm test  
 
-before_script:
-  - npm config set cache /cache --global  # Use CI cache for npm
-
-# Frontend Build Job
-build-frontend:
+# Frontend Build Stage
+build_frontend:
   stage: build
-  before_script:
+  script:
     - cd frontend
     - rm -rf node_modules package-lock.json
-    - npm install
+    - npm ci
   script:
     - npm run build
   artifacts:
     paths:
-      - frontend/build
-  only:
-    - main
+      - frontend/build  # Save frontend build output as an artifact
+  
 
-# Backend Build Job
-build-backend:
+# Backend Build Stage
+build_backend:
   stage: build
   before_script:
     - cd backend
     - rm -rf node_modules package-lock.json
-    - npm install
+    - npm ci
   script:
     - echo "Backend build completed"
 
@@ -45,21 +50,6 @@ test-frontend:
     - cd frontend
     - npm ci
   script:
-    - npm test
-  artifacts:
-    when: always
-    paths:
-      - frontend/test-reports
-
-# Backend Test Job
-test-backend:
-  stage: test
-  before_script:
     - cd backend
-    - npm ci
-  script:
-    - npm test
-  artifacts:
-    when: always
-    paths:
-      - backend/test-reports
+    - npm install
+    - echo "No build necessary for backend"  # No actual build step, just install dependencies
