@@ -12,7 +12,7 @@ services:
       - DB_PASSWORD=rootpassword
       - DB_NAME=bse25-31
     ports:
-      - "8075:8075"
+      - "8080:8080"
     depends_on:
       - mysql
     networks:
