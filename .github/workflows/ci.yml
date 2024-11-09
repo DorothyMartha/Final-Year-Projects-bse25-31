@@ -1,0 +1,89 @@
+name: CI Workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test_frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - name: Install dependencies (frontend)
+        run: |
+          cd frontend
+          npm install
+      - name: Run frontend tests
+        run: |
+          cd frontend
+          npm test
+
+  test_backend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - name: Install dependencies (backend)
+        run: |
+          cd backend
+          npm install
+      - name: Run backend tests
+        run: |
+          cd backend
+          npm test
+
+  build_frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - name: Install dependencies (frontend)
+        run: |
+          cd frontend
+          rm -rf node_modules package-lock.json
+          npm install
+      - name: Build frontend
+        run: |
+          cd frontend
+          npm run build
+      - name: Upload frontend build artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: frontend-build
+          path: frontend/build
+
+  build_backend:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - name: Install dependencies (backend)
+        run: |
+          cd backend
+          rm -rf node_modules package-lock.json
+          npm install
+      - name: Build backend
+        run: |
+          cd backend
+          echo "Backend build completed"
