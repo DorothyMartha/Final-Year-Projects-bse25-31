@@ -17,5 +17,12 @@ module.exports = {
     moduleNameMapper: {
       '\\.(css|less|sass|scss)$': 'identity-obj-proxy', // Mock CSS imports
     },
+    moduleFileExtensions: ["js", "jsx", "json", "node"],
+    // Add this line to support ES module imports like axios
+    globals: {
+      "ts-jest": {
+        useBabelrc: true,
+      },
+    },
   };
   
