@@ -1,14 +1,13 @@
-import './App.css';
-import RouteComponent from './routes/RouteComponent';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 
 function App() {
   return (
-    <>
-      <div className='app_render'>
-        <RouteComponent />
+    <BrowserRouter>
+      <div className="app_render">
+        <h1>Learn React</h1>  {/* Basic static content */}
       </div>
-    </>
+    </BrowserRouter>
   );
 }
 
