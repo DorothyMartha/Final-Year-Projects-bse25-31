@@ -72,7 +72,7 @@ require("./routes/memberRoutes")(app);
 require("./routes/taskRoutes")(app);
 
 // define port for project
-const PORT = 8075;
+const PORT = 8080;
 
 // Monitor when server starts
 app.listen(PORT, () => {
