@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@grafana/faro-react": "^1.11.0",
     "axios": "^1.7.7"
   }
 }
